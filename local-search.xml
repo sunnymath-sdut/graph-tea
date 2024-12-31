@@ -29,6 +29,31 @@
   
   
   <entry>
+    <title>图染色方法笔记（1.1）</title>
+    <link href="/graph-tea/2024/12/31/graph-color-notes-1-1/"/>
+    <url>/graph-tea/2024/12/31/graph-color-notes-1-1/</url>
+    
+    <content type="html"><![CDATA[<p>在这本书中，我们研究如何将一个集合划分为满足某些约束条件的子集。这个问题出现在设计电路、编译计算机代码时分配寄存器、解决数独谜题和安排飞行机组等多样的情境中。所有这些问题都可以用图染色的语言来描述，其中每种颜色代表划分中的一个子集，我们的目标是最小化颜色的数量。</p>一般的图染色问题没有简单的答案。更准确地说，它是 NP-hard的<sup><a href="#footnote1">[1]</a></sup>。</p><ol><li id="footnote1">脚注1: 这是脚注1的内容。</li></ol><p>。因此，我们不太可能找到一个高效的算法来在任意输入图上最优地解决染色问题。这个基本的难度结果给图染色的世界投下了长长的阴影。</p><p>与许多关于生成树、连通性和匹配的问题（对于这些问题我们有能给出最优解的高效算法）形成对比的是，对于图染色，我们主要关注于证明上下界。我们还关注图的结构，集中于平面图和其他表现出某种稀疏性的图类。</p><p>一个自然的想法是逐个考虑集合中的元素，将每个元素分配给第一个不被已经分配在那里的某个元素禁止的分区。这种贪心方法的表现可能非常好，也可能非常糟糕，这取决于我们考虑元素的顺序。在这一章中，我们寻找好的顺序，并研究它们为解决染色问题的最小颜色数量提供了什么界限。</p><div style="text-align: right"><p><span class="math inline">\(\Box\)</span></p></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>图染色笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>图论, 染色</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>数学软件：序</title>
     <link href="/graph-tea/2024/12/30/matlab-index/"/>
     <url>/graph-tea/2024/12/30/matlab-index/</url>
