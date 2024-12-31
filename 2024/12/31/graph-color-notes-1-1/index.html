@@ -26,11 +26,13 @@
 <meta property="og:site_name" content="宋老师的数学小屋">
 <meta property="og:description" content="在这本书中，我们研究如何将一个集合划分为满足某些约束条件的子集。这个问题出现在设计电路、编译计算机代码时分配寄存器、解决数独谜题和安排飞行机组等多样的情境中。所有这些问题都可以用图染色的语言来描述，其中每种颜色代表划分中的一个子集，我们的目标是最小化颜色的数量。 一般的图染色问题没有简单的答案。更准确地说，它是 NP-hard 的[1]。因此，我们不太可能找到一个高效的算法来在任意输入图上最优">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sunnymath-sdut.github.io/graph-tea/2024/12/31/graph-color-notes-1-1/1-1.png">
 <meta property="article:published_time" content="2024-12-30T23:56:24.000Z">
-<meta property="article:modified_time" content="2024-12-31T04:49:55.063Z">
+<meta property="article:modified_time" content="2024-12-31T14:02:55.105Z">
 <meta property="article:author" content="宋老师">
 <meta property="article:tag" content="图论, 染色">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sunnymath-sdut.github.io/graph-tea/2024/12/31/graph-color-notes-1-1/1-1.png">
   
   
   
@@ -223,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.6k 字
         
       </span>
     
@@ -234,7 +236,7 @@
         
         
         
-          10 分钟
+          14 分钟
         
       </span>
     
@@ -324,6 +326,8 @@ class="math inline">\(w\)</span>，则图 <span
 class="math inline">\(G\)</span>
 是<strong>连通的</strong>。如果图的边子集不形成圈，则称图是<strong>无圈的</strong>。一个连通的无圈图是一棵<strong>树</strong>，树的不相交并集是<strong>森林</strong>。除非另有说明，所有的图都是无向的，没有环和没有平行边。这样的图是<strong>简单的</strong>。</p>
 </blockquote>
+<p><a name="fig:1.1"></a> <img src="1-1.png" srcset="/graph-tea/img/loading.gif" lazyload title="图 1.1"
+alt="1-1" /></p>
 <p>例如，图 1.1 中的图 <span
 class="math inline">\(G\)</span>（用不同的着色显示了两次）是简单的，有
 <span class="math inline">\(|G| = 8\)</span> 和 <span
@@ -332,9 +336,9 @@ class="math inline">\(\|G\| =
 <span class="math inline">\(0\)</span> 到 <span
 class="math inline">\(7\)</span> 的路和长度从 <span
 class="math inline">\(4\)</span> 到 <span
-class="math inline">\(8\)</span> 的圈（但没有其他长度的路或圈）。</p>
-<blockquote>
-<p>一个<strong>正常的染色</strong>（或简单地说<strong>染色</strong>）给图的每个顶点分配颜色，使得相邻顶点获得不同的颜色。我们用正整数表示颜色。一个
+class="math inline">\(8\)</span> 的圈（但没有其他长度的路或圈）。 <span
+class="math inline">\(\sigma\)</span>
+&gt;一个<strong>正常的染色</strong>（或简单地说<strong>染色</strong>）给图的每个顶点分配颜色，使得相邻顶点获得不同的颜色。我们用正整数表示颜色。一个
 <strong><span class="math inline">\(k\)</span>-染色</strong>是使用最多
 <span class="math inline">\(k\)</span> 种颜色的合适染色。图 <span
 class="math inline">\(G\)</span> 是 <strong><span
@@ -347,8 +351,62 @@ class="math inline">\(k\)</span>-可染的最小的 <span
 class="math inline">\(k\)</span>。<span class="math inline">\(G\)</span>
 的使用 <span class="math inline">\(\chi(G)\)</span> 种颜色的染色是 <span
 class="math inline">\(G\)</span> 的一个<strong>最优染色</strong>。</p>
+<p>对图进行染色的一个简单方法是逐个考虑其顶点，以某种顶点顺序 <span
+class="math inline">\(\sigma\)</span>
+进行，给每个顶点着色，使用其邻点尚未使用的最小颜色。这是一种使用 <span
+class="math inline">\(\sigma\)</span> 的贪心染色。 <a href="#fig:1.1">图
+1.1</a> 显示了使用不同顶点顺序对同一图进行的两种贪心染色。</p>
+<p>在这本书中，我们关注染色的存在性，而不是产生它们的算法，因此我们通常将顶点顺序
+<span class="math inline">\(\sigma\)</span>
+隐含起来，如我们在我们第一个命题的证明中所做的。然而，我们在 <a
+href="#sec:1.1.3">1.1.3 节</a>
+的末尾简要讨论了将存在性证明转换为高效算法的方法。（对于我们的几乎所有证明，我们都可以这样做。）</p>
+<p>对于每个图 <span class="math inline">\(G\)</span>，存在一个顶点顺序
+<span class="math inline">\(\sigma\)</span> ，使得使用 <span
+class="math inline">\(\sigma\)</span> 对 <span
+class="math inline">\(G\)</span>
+进行贪心染色产生最优染色。（给定一个最优染色，通过首先列出所有着色为
+<span class="math inline">\(1\)</span> 的顶点，然后是着色为 <span
+class="math inline">\(2\)</span> 的顶点，依此类推，形成 <span
+class="math inline">\(\sigma\)</span>
+。）但这个观察并没有提供一个高效算法，因为每个图 <span
+class="math inline">\(G\)</span> 有 <span
+class="math inline">\(|G|!\)</span>
+可能的顶点顺序——远远超过我们尝试的所有顺序。即使对于色数为 <span
+class="math inline">\(2\)</span> 的图类，一些顶点顺序的表现也很差（见 <a
+href="#exer:1">练习 1</a>）。幸运的是，我们通常可以使用 <span
+class="math inline">\(G\)</span> 的结构快速找到一个好顺序 <span
+class="math inline">\(\sigma\)</span> ，尽管可能不是最优的。</p>
+<blockquote>
+<p><strong>命题 1.2</strong> 如果 <span class="math inline">\(G\)</span>
+是森林，则 <span class="math inline">\(\chi(G) \le 2\)</span>。</p>
 </blockquote>
-<p>对图进行染色的一个简单方法是逐个考虑其顶点，以某种顶点顺序σ进行，给每个顶点着色，使用其邻居尚未使用的最小颜色。这是一种使用σ的贪心染色。图1.1显示了使用不同顶点顺序σ对同一图进行的两种贪心染色。</p>
+<blockquote>
+<p><strong>证明.</strong> 假设命题是错误的，令 <span
+class="math inline">\(G\)</span> 是一个顶点数最少的反例。由于 <span
+class="math inline">\(G\)</span> 是森林，它包含一个顶点 <span
+class="math inline">\(v\)</span>，其度数最多为 <span
+class="math inline">\(1\)</span>。令 <span class="math inline">\(G&#39;
+:= G − v\)</span>。由于 <span class="math inline">\(G&#39;\)</span>
+也是森林，并且 <span class="math inline">\(G&#39;\)</span> 的顶点数少于
+<span class="math inline">\(G\)</span>，而 <span
+class="math inline">\(G\)</span> 是最小的反例，所以结论对 <span
+class="math inline">\(G&#39;\)</span> 成立。也就是说，<span
+class="math inline">\(G&#39;\)</span> 有一个 <span
+class="math inline">\(2\)</span> 染色 <span
+class="math inline">\(\varphi&#39;\)</span>。由于 <span
+class="math inline">\(\varphi&#39;\)</span> 在 <span
+class="math inline">\(v\)</span>
+的邻点上最多使用一种颜色，我们可以贪心地将染色 <span
+class="math inline">\(\varphi&#39;\)</span> 扩展到 <span
+class="math inline">\(G\)</span>。因此 <span
+class="math inline">\(G\)</span> 根本不是一个反例。<span
+class="math inline">\(\Box\)</span></p>
+</blockquote>
+<h3 id="曲面上的图染色海伍德界">1.1.2 曲面上的图染色：海伍德界</h3>
+<h3 id="权转移法和高效染色算法">1.1.3 权转移法和高效染色算法
+<a name="sec:1.1.3"></a></h3>
+<h3 id="布鲁克斯定理">1.1.4 布鲁克斯定理</h3>
 <div style="text-align: right">
 <p><span class="math inline">\(\Box\)</span></p>
 </div>
@@ -442,12 +500,18 @@ class="math inline">\(G\)</span> 的一个<strong>最优染色</strong>。</p>
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/graph-tea/2024/12/31/graph-color-notes-0/" title="图染色方法笔记：序">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">图染色方法笔记：序</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/graph-tea/2024/12/31/graph-color-notes-0/" title="图染色方法笔记：序">
-                        <span class="hidden-mobile">图染色方法笔记：序</span>
+                      <a href="/graph-tea/2024/12/30/matlab-index/" title="数学软件：序">
+                        <span class="hidden-mobile">数学软件：序</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
