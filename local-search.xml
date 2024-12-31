@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>图染色方法笔记：序</title>
+    <link href="/graph-tea/2024/12/31/graph-color-notes-0/"/>
+    <url>/graph-tea/2024/12/31/graph-color-notes-0/</url>
+    
+    <content type="html"><![CDATA[<p>这是 Daniel W. Cranston 所撰写的《Graph ColoringMethods》一书的学习笔记， 作者将该书全文发布于https://graphcoloringmethods.com/ ，包括如下章节：</p><ul><li>Greedy Coloring</li><li>Gadgets: Constructions for Lower Bounds</li><li>Recoloring</li><li>Vertex Identification: Coloring Planar Graphs</li><li>The Kernel Method</li><li>Deletion and Contraction: Nowhere-Zero Flows</li><li>Rosenfeld Counting</li><li>The Combinatorial Nullstellensatz</li><li>The Activation Strategy</li><li>The Vertex Shuffle</li><li>Precoloring Extension</li><li>The Potential Method</li><li>The Rest of the Story</li></ul><div style="text-align: right"><p><span class="math inline">\(\Box\)</span></p></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>图染色笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>图论, 染色</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>数学软件：序</title>
     <link href="/graph-tea/2024/12/30/matlab-index/"/>
     <url>/graph-tea/2024/12/30/matlab-index/</url>
